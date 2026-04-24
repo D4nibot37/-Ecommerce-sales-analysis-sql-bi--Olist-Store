@@ -1,131 +1,75 @@
-# Brazilian E-Commerce (Olist) – End-to-End SQL Data Pipeline & BI Analysis
+🛒 Brazilian E-Commerce Analytics (Olist) – End-to-End Data Pipeline & BI Dashboard
+📌 Project Overview
+This project presents an end-to-end analytical solution using the Brazilian E-Commerce Public Dataset by Olist. The goal was to transform raw transactional data into a scalable, high-performance Business Intelligence dashboard to analyze sales trends, customer behavior, and seller performance.
+
+🚀 Project Evolution (v2.0): Initially built using a flat, denormalized SQL view. I recently refactored the architecture into a proper Star Schema in Power BI, implementing a custom dynamic Date table and advanced DAX Time Intelligence measures, significantly improving model performance and analytical depth.
+<br><br>
+
+🏗️ Data Architecture & Workflow
+
+1️⃣ Staging & Production Layer (PostgreSQL)
+
+Raw Ingestion: CSV data loaded into a staging schema using TEXT data types to prevent truncation and allow flexible profiling.
+
+Data Cleaning & Typing: Transformed raw data with strict data typing (NUMERIC, TIMESTAMP, INT), handled missing values, and applied business logic to preserve referential integrity.
+
+Validation: Reconciled revenue between SQL tables and the BI Fact table to guarantee 100% accuracy. Accounted for a 775-order discrepancy caused by intentional INNER JOIN logic filtering out incomplete records.
+
+2️⃣ Data Modeling (Power BI)
+
+Designed a Star Schema with a central Fact_sales table and multiple dimensions (Dim_customers, Dim_products, Dim_sellers).
+
+<img width="1846" height="736" alt="Olist_star_schema" src="https://github.com/user-attachments/assets/5b86c5a5-8a5f-44b7-9750-e57c22eb1ae3" />
 
 
----
-
-<br>
 
 
-## 📌 Project Overview
+Continuous Date Table: Generated a dynamic, continuous Dim_date table using DAX to ensure seamless compatibility with Time Intelligence functions.
 
-This project presents a complete analytical pipeline built using the Brazilian E-Commerce Public Dataset by Olist.
-
-The objective was to:
-
-- Design a structured SQL data pipeline  
-- Clean and transform raw transactional data  
-- Validate data integrity before reporting  
-- Create an analytical sales view  
-- Develop business dashboards in Power BI  
+<img width="1854" height="494" alt="image" src="https://github.com/user-attachments/assets/c1b7c942-7ae0-4fcb-8457-07778882278b" />
+<br><br>
 
 
----
+3️⃣ Advanced DAX & Business Metrics
+Developed robust DAX measures to track critical business KPIs, enabling deep-dive analysis into period-over-period performance:
 
-<br>
+Time Intelligence: SalesYTD (Year-to-Date), SalesLY (Last Year), and YoY%_Sales_variance to track growth trends.
 
+Financial Metrics: Total_Gross_Revenue, Net_sales, and Total_shipping_cost.
 
-## 🏗️ Data Architecture
-
-The pipeline follows a layered structure to ensure scalability, clarity, and data integrity.
-
-
----
-
-<br>
-
-
-### 1️⃣ Staging Layer (Raw Ingestion)
-
-Raw CSV data is loaded into a `staging` schema using `TEXT` data types.
-
-**Purpose**
-
-- Guarantee smooth ingestion  
-- Avoid truncation errors  
-- Enable flexible profiling  
-- Prepare data for structured transformation  
-
-
----
+Behavioral Metrics: AvgTicket (Average Order Value), Total_orders, and Total_customers.
 
 <br>
 
-
-### 2️⃣ Production Layer (Clean Tables)
-
-Data is transformed into structured tables with:
-
-- Correct data types (NUMERIC, TIMESTAMP, INT)  
-- Standardized formatting  
-- Business logic applied  
-- Referential integrity preserved  
+<img width="592" height="57" alt="image" src="https://github.com/user-attachments/assets/8a1cfa35-b701-4608-b48f-52e17090f4ac" />
 
 
----
+<img width="895" height="71" alt="image" src="https://github.com/user-attachments/assets/7ca7710c-a8f8-43ca-b576-5b6694082e24" />
+<br><br>
 
-<br>
-
-
-### 3️⃣ Analytical View
-
-A denormalized reporting view was created:
-
-`public.view_sales_report`
-
-This view integrates time, customer, seller, and revenue dimensions and serves as the source for BI reporting.
+📈 Key Business Insights
+Revenue Trends: Consistent revenue growth between Sep 2016 and May 2018, followed by a structural trend reversal starting in June 2018.
 
 
----
 
-<br>
+<img width="1293" height="722" alt="Executive summary" src="https://github.com/user-attachments/assets/3a70f627-63d7-420d-b965-88fb7ea5859b" />
+<br><br>
 
+📈Category Performance: Health & Beauty is the leading category, contributing heavily to the total revenue.
 
-## 📊 Data Validation
+📈Market Concentration: A significant portion of revenue is concentrated among top-tier sellers and specific geographic regions (e.g., SP state).
 
-All validation was performed in SQL before dashboard development.
+<img width="1272" height="720" alt="Product   customer Insights" src="https://github.com/user-attachments/assets/1ab0ebbd-66b7-45d0-82ce-ef8c442b2a74" />
 
-- No duplicate primary keys detected  
-- Revenue successfully reconciled between fact table and analytical view  
-- 775-order discrepancy explained by INNER JOIN logic  
-- No null or negative revenue values  
+<br><br><br><br>
 
 
----
-
-<br>
 
 
-## 📈 Business Insights
 
-- Revenue grew steadily between Sep 2016 and May 2018 (+1.15M).  
-- Structural trend reversal observed from June 2018.  
-- Health & Beauty is the leading category (16% of total revenue).  
-- Revenue concentration exists across top sellers and regions.  
-- Late 2018 decline reflects dataset limitation.  
+💡 Skills Demonstrated
+Data Engineering: Relational Databases (PostgreSQL), ETL Pipelines, Data Cleansing, SQL Joins.
 
+Data Modeling: Star Schema design, Fact & Dimension tables logic.
 
----
-
-<br>
-
-
-## 🛠 Tools Used
-
-- PostgreSQL  
-- Power BI  
-- GitHub  
-
-
----
-
-<br>
-
-
-## 🎯 Key Learning Outcomes
-
-- Layered SQL architecture  
-- Fact vs Dimension modeling  
-- Data profiling and validation  
-- Revenue reconciliation  
-- BI storytelling  
-
+Business Intelligence: Advanced DAX (Time Intelligence, variables, dynamic tables), Power BI Dashboarding, KPI creation.
