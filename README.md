@@ -60,7 +60,8 @@ Developed robust DAX measures to track critical business KPIs, enabling deep-div
 * **Revenue Trends:** Consistent revenue growth between Sep 2016 and May 2018, followed by a structural trend reversal starting in June 2018.
 
 <div align="center">
-  <img width="1293" height="722" alt="Executive summary" src="https://github.com/user-attachments/assets/3a70f627-63d7-420d-b965-88fb7ea5859b" />
+  <img width="1283" height="721" alt="image" src="https://github.com/user-attachments/assets/2e4be00d-b2c8-4869-a5c7-404b18caf3b9" />
+
 </div>
 <br>
 
